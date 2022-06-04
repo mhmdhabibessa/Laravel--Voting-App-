@@ -26,6 +26,7 @@ module.exports = {
                 'purple' : '#8b60ed',
             },
             spacing: {
+                104 :'26rem',
                 22: '5.5rem',
                 44: '11rem',
                 70: '17.5rem',
