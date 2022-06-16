@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
+        <livewire:styles />
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans text-gray-900 text-sm bg-gray-100">
@@ -54,7 +55,7 @@
 
         <main class="container mx-auto max-w-custom flex">
             <div class="w-70 mr-5">
-                <div class="border-2 border-blue rounded-xl mt-16">
+                <div class="border-2 border-blue rounded-xl mt-16 sticky top-6">
                     <div class="text-center px-6 py-2 pt-6">
                         <h3 class="font-semibold "> Add an Idea</h3>
                         <p class="text-xs mt-4">  Lets us to create idea for to be done us  </p>
@@ -115,5 +116,7 @@
             </div>
 
         </main>
+        <livewire:scripts />
+
     </body>
 </html>
