@@ -20,7 +20,7 @@
     <body class="font-sans text-gray-900 text-sm bg-gray-100">
         <header class="flex items-center justify-between px-8 py-4">
 
-            <a href="#"><img src="{{ asset('img/logo.png') }}" width="120px" height="150px" alt="logo"></a>
+            <a href="/"><img src="{{ asset('img/logo.png') }}" width="120px" height="150px" alt="logo"></a>
             
             <div class="flex items-center">
                 @if (Route::has('login'))
@@ -58,41 +58,35 @@
                 <div class="border-2 border-blue rounded-xl mt-16 sticky top-6">
                     <div class="text-center px-6 py-2 pt-6">
                         <h3 class="font-semibold "> Add an Idea</h3>
-                        <p class="text-xs mt-4">  Lets us to create idea for to be done us  </p>
+                        <p class="text-xs mt-4"> 
+                            @auth
+                            Lets us to create idea for to be done us 
+                            @else
+                            Please Login to Create Idea
+                            @endauth
+                         </p>
+                                
                     </div>
-                    <form action="#" method="POST" class="space-y-4 px-4 py-6">
-                        <div>
-                            <input type="text" class="w-full text-sm bg-white border-none rounded-xl placeholder-gray-900 px-4 py-2" placeholder="Your Idea">
-                        </div>
-                        <div>
-                            <select name="category_add" id="category_add" class="w-full bg-white text-sm rounded-xl border-none px-4 py-2">
-                                <option value="Category One">Category One</option>
-                                <option value="Category Two">Category Two</option>
-                                <option value="Category Three">Category Three</option>
-                                <option value="Category Four">Category Four</option>
-                            </select>
-                        </div>
-                        <div>
-                            <textarea name="idea" id="idea" cols="30" rows="4" class="w-full bg-white rounded-xl border-none placeholder-gray-900 text-sm px-4 py-2" placeholder="Describe your idea"></textarea>
-                        </div>
-                        <div class="flex items-center justify-between space-x-3">
-                            <button
-                                type="button"
-                                class="flex items-center justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3"
+                    @auth
+                    
+                    <livewire:create-idea />
+                    @else
+                        <div class="my-6 text-center">
+                             <a
+                                href="{{ route('login') }}"
+                                class="inline-block justify-center w-1/2 h-11 text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3"
                             >
-                                <svg class="text-gray-600 w-4 transform -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-                                </svg>
-                                <span class="ml-1">Attach</span>
-                            </button>
-                            <button
-                                type="submit"
-                                class="flex items-center justify-center w-1/2 h-11 text-xs bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3"
-                            >
-                                <span class="ml-1">Submit</span>
-                            </button>
+                                <span class="ml-1">Login</span>
+                             </a>
+                             <a
+                             href="{{route('register')}}"
+                             class="inline-block mt-4 justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3"
+                         >
+                                Sign Up
+                        </a>
                         </div>
-                    </form>
+                    @endauth
+                  
                 </div>
             </div>
             <div class="w-175">
