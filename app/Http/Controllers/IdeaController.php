@@ -6,6 +6,8 @@ use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
 use App\Models\Idea;
 
+// use const App\Models\PAGGING_COUNT;
+
 class IdeaController extends Controller
 {
     /**
@@ -19,7 +21,8 @@ class IdeaController extends Controller
         // return view('ideas.index', compact('ideas'));
         return view( 'idea.index',
          [
-            'ideas' => Idea::simplePaginate(10),
+            'ideas' => Idea::with('user','category') 
+                    ->simplePaginate(Idea::PAGGING_COUNT),
         ]);
     }
 

@@ -29,7 +29,23 @@
     <div class="ideas-container space-y-6 my-6">
         @foreach ($ideas as  $idea )
             
-        <div class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
+        <div
+        x-data 
+        @click=" 
+                clicked = $event.target  
+                target =  clicked.tagName.toLowerCase()
+                ignors = [ 'button' , 'a' , 'path' , 'svg' ]
+                  if( ! ignors.includes(target) )  
+                    {
+                        clicked.closest('.ideas-container').querySelector('.idea-link').click()
+
+                    }
+                {{-- if (target != 'button' && target !='svg' && target != 'path' && target !='a' ) {
+                        $event.target.closest('.ideas-container').querySelector('.idea-link').click()
+                } --}}
+
+        "
+        class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
             <div class="border-r border-gray-100 px-5 py-8">
                 <div class="text-center">
                     <div class="font-semibold text-2xl">12</div>
@@ -43,12 +59,13 @@
             <div class="flex flex-1 px-2 py-6">
                 <div class="flex-none">
                     <a href="#">
-                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="w-14 h-14 rounded-xl">
+                        <img src="{{$idea ->user -> getAvatar()}}"
+                         alt="avatar" class="w-14 h-14 rounded-xl">
                     </a>
                 </div>
                 <div class="w-full mx-4">
                     <h4 class="text-xl font-semibold">
-                        <a href="{{ route('idea.show', $idea) }}" class="hover:underline">{{ $idea -> title}}</a>
+                        <a href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea -> title}}</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
                         {{ $idea -> description}}
@@ -58,7 +75,7 @@
                         <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
                             <div>{{ $idea -> created_at -> diffForHumans() }}</div>
                             <div>&bull;</div>
-                            <div>Category 1</div>
+                            <div>  {{ $idea->category->name }}  </div>
                             <div>&bull;</div>
                             <div class="text-gray-900">3 Comments</div>
                         </div>
