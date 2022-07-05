@@ -48,4 +48,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(Idea::class);
     }
+
+    public  function getAvatar()
+    {
+        $firstCharacter = $this->name[0];
+        $integerToUse = is_numeric($firstCharacter)
+        ? ord( strtolower( $firstCharacter)) - 21  
+        : ord(strtolower($firstCharacter)) - 96;
+    // $emailHash = md5($this->email);
+    // $avatarDefaults = ['mp', 'identicon', 'monsterid', 'retro', 'robohash'];
+    // $randomInteger = rand(0, count($avatarDefaults) - 1);
+    
+    return 'https://www.gravatar.com/avatar/'
+            .md5($this-> email)
+            .'?s=200'
+            .'&d=http://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-'
+            .$integerToUse
+            .'.png';
+
+
+    }
 }
