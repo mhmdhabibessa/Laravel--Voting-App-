@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
 use App\Models\Idea;
+use App\Models\Vote;
 
 // use const App\Models\PAGGING_COUNT;
 
@@ -21,13 +22,9 @@ class IdeaController extends Controller
         // return view('ideas.index', compact('ideas'));
 
         // dd(votes_count);
-        return view( 'idea.index',
-         [
-            'ideas' => Idea::with('user','category','status')
-                    ->withCount('votes')
-                    ->orderBy('id', 'desc') 
-                    ->simplePaginate(Idea::PAGGING_COUNT),
-        ]);
+        // dd($this->$votes_count);
+        return view( 'idea.index');
+         
     }
 
     public function show(Idea $idea){

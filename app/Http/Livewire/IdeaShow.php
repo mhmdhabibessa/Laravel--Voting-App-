@@ -3,17 +3,41 @@
 namespace App\Http\Livewire;
 
 use App\Models\Idea;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class IdeaShow extends Component
 {
     public $idea;
-    public $voteCount;
+    public $votesCount;
+    // public $hasVoted;
     
-    public function mount(Idea  $idea , $voteCount)
+    public function mount(Idea  $idea , $votesCount)
     {
         $this->idea = $idea;
-        $this->voteCount = $voteCount;
+        $this->votesCount = $votesCount;
+        $this->has_voted = $idea->isVotedByUser(auth()->user()); 
+        // Log::debug('Output:'.$idea->isVotedByUser(auth()->user()) );  
+    }
+
+    public function vote(User $user)
+    {   
+
+        if(! auth() ->check()) {
+            return redirect( route('login') );
+        }
+ 
+        if ($this->has_voted) {
+            $this->idea->removevote(auth() ->user());
+            $this -> votesCount --;
+            $this -> has_voted = false;
+        }
+        else {
+            $this->idea->vote(auth() ->user());
+            $this -> votesCount ++;
+            $this -> has_voted = true;
+        }
     }
     
     public function render()
