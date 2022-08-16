@@ -1,7 +1,7 @@
 <div>
     <nav class="flex items-center justify-between text-gray-400 text-xs">
         <ul class="flex uppercase font-semibold space-x-10">
-            <li> <a wire:click.prevent="setStatus('ALL')" href="#" class="border-b-4 pb-3
+            <li> <a wire:click.prevent="setStatus('ALL')" href="{{route('ideas.index' ,['status' =>'ALL' ] )}}" class="border-b-4 pb-3
                  @if($status === 'ALL')
                 border-blue text-gray-900
                 @endif 
