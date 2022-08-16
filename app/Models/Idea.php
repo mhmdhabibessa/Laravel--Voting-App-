@@ -45,10 +45,11 @@ class Idea extends Model
         $allStatuses = [
             'Open' => 'bg-gray-500',
             'Considering' => 'bg-purple	 text-white',
-            'In Progress' => 'bg-yellow-500 text-white' ,
-            'Implemented' => 'bg-green-500 text-white', 
-            'Closed' => 'bg-red-500 text-white' ,
+            'In Progress' => 'bg-yellow text-white' ,
+            'Implemented' => 'bg-green text-white', 
+            'Closed' => 'bg-red text-white' ,
         ];
+        
 
         return $allStatuses[$this->status->name];
     }
