@@ -90,19 +90,7 @@
                 </div>
             </div>
             <div class="w-175">
-                <nav class="flex items-center justify-between text-xs">
-                    <ul class="flex uppercase font-semibold space-x-10">
-                        <li> <a href="#" class="border-b-4 pb-3 border-blue"> All Ideas(87) </a></li>
-                        <li> <a href="#" class="border-b-4 pb-3 transition duration-200 ease-in hover:border-blue"> Considering(60) </a></li>
-                        <li> <a href="#" class="border-b-4 pb-3 transition duration-200 ease-in hover:border-blue"> In Progress(1) </a></li>
-                    </ul>
-
-                    <ul class="flex uppercase font-semibold space-x-10 ">
-                        <li> <a href="#" class="border-b-4 pb-3 border-blue"> Implemented(10) </a></li>
-                        <li> <a href="#" class="border-b-4 pb-3 border-blue"> Closed(55) </a></li>
-                    </ul>
-                    
-                </nav>
+                    <livewire:status-filter />
                  
                 <div class="mt-8">
                     {{ $slot }}
