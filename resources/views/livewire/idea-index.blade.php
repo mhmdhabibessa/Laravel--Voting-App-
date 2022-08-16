@@ -71,8 +71,8 @@
                         x-data ="{ isOpen:false }"
                         class="flex items-center space-x-2">
                             <div class="
-                            text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4"
                             {{$idea->getStatusClasses()}}
+                            text-xxs font-bold uppercase  leading-none rounded-full text-center w-28 h-7 py-2 px-4"
                             >{{$idea->status->name}}
                         </div>
                             <button 
