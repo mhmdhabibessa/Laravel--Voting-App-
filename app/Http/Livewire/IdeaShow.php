@@ -12,6 +12,7 @@ class IdeaShow extends Component
     public $idea;
     public $votesCount;
     // public $hasVoted;
+    protected $listeners =['statusWasUpdated'];
     
     public function mount(Idea  $idea , $votesCount)
     {
@@ -40,6 +41,11 @@ class IdeaShow extends Component
         }
     }
     
+    public function statusWasUpdated(){
+
+        $this->idea->refresh();
+    }
+
     public function render()
     {
         return view('livewire.idea-show', [
