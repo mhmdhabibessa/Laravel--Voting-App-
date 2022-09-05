@@ -1,7 +1,8 @@
+
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
 
 [x-cloak] {
     display: none !important;
@@ -64,3 +65,4 @@
     background-clip: content-box, border-box;
     border-color: transparent;
 }
+
